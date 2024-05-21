@@ -36,6 +36,7 @@ RUN mkdir llvm-project/build && \
     ninja cxxabi && \
     ninja unwind
 
-ENV LIBCXX_INSTALL=/usr/local
 RUN cd llvm-project/build && \
-    ninja install-cxx install-cxxabi install-unwind
+    ls -l lib && \
+    ninja install-cxx install-cxxabi install-unwind && \
+    ls -l /usr/local/lib

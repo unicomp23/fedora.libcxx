@@ -1,18 +1,16 @@
-FROM arm64v8/fedora:latest
+FROM amazonlinux:2023
 
 # Install build dependencies
-RUN dnf update -y && \
-    dnf install -y \
+RUN yum update -y && \
+    yum install -y \
         cmake \
         ninja-build \
         git \
         clang \
-        libcxx-devel \
-        libcxxabi-devel \
         libunwind-devel \
         make \
         gcc-c++ && \
-    dnf clean all
+    yum clean all
 
 # Clone LLVM source
 RUN git clone --depth=1 --branch llvmorg-15.0.7 https://github.com/llvm/llvm-project.git
